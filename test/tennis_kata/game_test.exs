@@ -2,28 +2,34 @@ defmodule TennisKata.GameTest do
   use ExUnit.Case
   alias TennisKata.Game
 
+  # Begin Story 1
+
   test "score goes to 15-0 when server wins" do
     game = Game.new
     game = Game.server_win(game)
     assert Game.get_score(game) == {:"15", :"0"}
   end
+
   test "score goes to 0-15 when receiver wins" do
     game = Game.new
     game = Game.receiver_win(game)
     assert Game.get_score(game) == {:"0", :"15"}
   end
+
   test "score goes to 30-0 when server wins two times" do
     game = Game.new
     game = Game.server_win(game)
     game = Game.server_win(game)
     assert Game.get_score(game) == {:"30", :"0"}
   end
+
   test "score goes to 0-30 when receiver wins two times" do
     game = Game.new
     game = Game.receiver_win(game)
     game = Game.receiver_win(game)
     assert Game.get_score(game) == {:"0", :"30"}
   end
+
   test "score goes to 15-15 when server and receiver wins" do
     game = Game.new
     game = Game.server_win(game)
